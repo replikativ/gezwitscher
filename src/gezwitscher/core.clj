@@ -87,30 +87,10 @@
 
 (comment
 
-
   (def creds
     {:consumer-key "****"
      :consumer-secret "****"
      :access-token "****"
      :access-token-secret "****"})
 
-  (def factory (get-twitter-factory creds))
-
-  (def stream (get-twitter-stream-factory creds))
-
-  (make-filter-streamer stream :track ["clojure"] :follow [])
-
-  (comment
-    (initialize server-state "opt/test-config.edn")
-
-    (def stop-stream
-      (let [{{:keys [follow track credentials]} :app} @server-state]
-        (start-filter-stream follow track
-                             (fn [s]
-                               (let [{:keys [text user]} (store-raw-tweet s)]
-                                 (debug (str "@" (:screen_name user) ": " text))))
-                             (fn [e] (debug e))
-                             credentials)))
-
-
-    ))
+)
